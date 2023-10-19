@@ -2,31 +2,47 @@
 <html>
 
 <head>
+    <!-- Character set and responsive meta tag -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title for the webpage -->
     <title>Assignment 2 | COMP1073 Client-Side JavaScript</title>
+
+    <!-- Link to external stylesheet -->
     <link rel="stylesheet" href="./css/styles.css">
+
+    <!-- Link to external JavaScript file (loaded after the HTML content with "defer" attribute) -->
     <script src="./js/scripts.js" defer></script>
 </head>
 
 <body>
+    <!-- Display student ID (probably populated via JavaScript) -->
     <div>
         <p id="myStudentId"></p>
     </div>
+
+    <!-- Input field for entering a custom number -->
     <div>
         <label for="customNumber">Enter number from 1 to 100:</label>
         <input id="customNumber" type="number" placeholder="" />
     </div>
+
+    <!-- Buttons for color changing functionality -->
     <div>
         <button class="custColor">Change custom color</button>
         <button class="randColor">Change random color</button>
     </div>
+
+    <!-- Dropdown for image selection -->
     <div>
         <label for="imageSelect">Select Image</label>
         <select id="imageSelect">
             <option value="">Please choose…</option>
         </select>
     </div>
+
+    <!-- Image display area (source is likely controlled via JavaScript) -->
     <div>
         <img id="images" src="" alt=""></img>
     </div>

@@ -1,4 +1,4 @@
-// constants for query selector
+// Constants for DOM elements
 const customColorBtn = document.querySelector('.custColor');
 const randomColorBtn = document.querySelector('.randColor');
 const selectList = document.getElementById('imageSelect');
@@ -6,17 +6,20 @@ const studentIdP = document.getElementById('myStudentId');
 const customNumberInput = document.getElementById('customNumber');
 const imageElement = document.getElementById('images');
 
+// Array of image filenames
 const images = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg"];
 
-
-// function to change bg color from user input and add student id
+// Function to change background color based on user input and display student ID
 function changeCustomColor() {
     const value = parseInt(customNumberInput.value);
 
+    // Check if the entered value is a number
     if (isNaN(value)) return;
 
+    // Display student ID
     studentIdP.innerText = "Student ID: 200531948";
 
+    // Change the background color based on the value range
     if (value < 0 || value > 100) {
         document.body.style.backgroundColor = "red";
     } else if (value <= 20) {
@@ -32,17 +35,16 @@ function changeCustomColor() {
     }
 }
 
-// function to change bg color from random no.
+// Function to generate a random number and then change the background color
 function changeRandomColor() {
     const randomValue = Math.floor(Math.random() * 101);
-    customNumberInput.value = randomValue; // Optional: to show the random number in input
+    customNumberInput.value = randomValue; // Display the generated random number in the input field
     changeCustomColor();
 }
 
-// function to generate options for select list
+// Function to populate the select list with options from the images array
 function addList() {
-    // Tip: you might have to check length condition so that the list does not keep growing when clicked
-    // Tip: use createElement and appendChild inside every for loop to add elements to select list from array 
+    // Remove existing options from the select list
     while (selectList.firstChild) {
         selectList.removeChild(selectList.firstChild);
     }
@@ -51,29 +53,27 @@ function addList() {
     defaultOption.value = "";
     selectList.appendChild(defaultOption);
 
-    // Populate options from the images array
+    // Add options from the images array
     images.forEach(img => {
         const option = document.createElement('option');
-        option.innerText = img.split('.')[0];  // Assuming image names can be used as option text
+        option.innerText = img.split('.')[0];  // Use image filename (without extension) as option text
         option.value = img;
         selectList.appendChild(option);
     });
 }
 
-// function to change image
+// Function to update the image source based on the selected option
 function changeImage() {
     const selectedValue = selectList.value;
     if (selectedValue) {
-        imageElement.src = `./img/${selectedValue}`;  // Assuming your images folder is named 'img'
+        imageElement.src = `./img/${selectedValue}`;  // Assuming the images are stored in an 'img' directory
     } else {
-        imageElement.src = "";  // No image to show
+        imageElement.src = "";  // No image to display if no selection
     }
 }
 
-// event listeners for on click event of buttons and select
-
-// event listeners for on change event of select
+// Event listeners
 customColorBtn.addEventListener('click', changeCustomColor);
 randomColorBtn.addEventListener('click', changeRandomColor);
-selectList.addEventListener('click', addList);
-selectList.addEventListener('change', changeImage);
+selectList.addEventListener('click', addList);  // Populates the dropdown when clicked
+selectList.addEventListener('change', changeImage);  // Changes the displayed image when an option is selected
