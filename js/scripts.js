@@ -6,7 +6,7 @@ const studentIdP = document.getElementById('myStudentId');
 const customNumberInput = document.getElementById('customNumber');
 const imageElement = document.getElementById('images');
 
-const images = ["img1.jpg", "img2.jpg", "img3.jpg"];
+const images = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg"];
 
 
 // function to change bg color from user input and add student id
@@ -15,7 +15,7 @@ function changeCustomColor() {
 
     if (isNaN(value)) return;
 
-    studentIdP.innerText = "200531948"; // Replace YOUR_STUDENT_ID with your actual student id
+    studentIdP.innerText = "Student ID: 200531948";
 
     if (value < 0 || value > 100) {
         document.body.style.backgroundColor = "red";
